@@ -1,7 +1,5 @@
 # Recreating the Masters of Interactive Light
 
-_This project is to be done in teams of 2._
-
 **Rohil Saraf, Aryan Palave**
 
 **THE MASTERWORK YOU DREW FROM THE HAT: E. T.'s Glowing Heart**
@@ -92,18 +90,35 @@ the interaction*:
 **Describe your masterwork here, in your own words. What is the core interaction
 someone would recognize it by?**
 
+**What it is:** E.T.'s glowing chest — his "glowing heart", is a practical effect from the movie E.T. the Extra-Terrestrial (1982). In our recreation, we're focusing on it as a response to kindness: E.T.'s heart glows when someone does something caring or thoughtful for him, making his gratitude and emotional response visible without words.
+
+**Inputs:** The "input" is an act of kindness directed at E.T. by someone else being fed, comforted, hidden and protected, spoken to gently, or cared for when he's scared or hurt.
+
+**Outputs:** A warm reddish-orange glow in his chest that brightens and pulses in response to the kindness, a small act might produce a soft, gentle pulse, while a deeply caring moment produces a fuller, brighter, steadier glow.
+
+**Who is present, and how it colors relationships:** E.T. is the receiver of kindness and the glow is his visible "thank you." Elliott (or whoever performs the kind act) becomes the giver the light lets Elliott see, in real time, that his care is landing and being felt, even though E.T. can't easily say so in words.
+
+**What it's famous for:** While the film's iconic light beats are usually tied to healing or dying, we're drawing on the quieter, tender moments, Elliott sharing food, wrapping him in blankets, hiding him from harm, and imagining the heartlight as the visible sign of E.T. registering that warmth.
+
+**Strengths:** It turns responses like gratitude, comfort, feeling cared for into something visible and immediate, which makes small acts of kindness feel rewarded and reciprocal. It also builds intimacy, since only the person doing the kind act gets to see the glow respond directly to them.
+
+**Weaknesses:** Because the trigger is an internal feeling rather than a clear physical action, it can be hard for an audience to tell exactly *what* kindness caused the glow without context. It also risks reading as generic "happy light" without a clear, legible connecting action beforehand.
+
+**Core interaction someone would recognize it by:** Someone performs a small act of kindness for E.T., feeding him, covering him with a blanket, speaking gently, and his chest glows in warm response, like saying a thankyou.
+
 ## Part A. Plan
 
-For your masterwork, reconstruct the interaction as a scene:
+**Setting:** A dim, quiet closet or blanket fort in a kid's bedroom at night, echoing the film's makeshift hideaway where Elliott cares for E.T. in secret.
 
-- **Setting:** Where and when does this interaction happen? (a jungle, a kitchen,
-  a spaceship corridor, a nightclub, a harbor at night)
-- **Players:** Who is involved? Who else is present? Think through everyone in
-  the setting, not just the primary user.
-- **Activity:** What is happening between the players and the light?
-- **Goals:** What is each player trying to do?
+**Players:**
+- **E.T.** — seated or lying down, chest dim and unlit at first.
+- **Elliott** — the one performing the kind act (offering food, covering him with a blanket, or speaking softly to him).
 
-**Describe your setting, players, activity, and goals here.**
+**Activity:** Elliott notices E.T. is cold, scared, or hungry, and does something small and caring for him. As the kindness registers, E.T.'s chest glow builds from dark to a warm, gentle pulse. Elliott notices the response and reacts with warmth/surprise, encouraging him to keep going — maybe trying a second kind gesture to see the glow respond again, even brighter.
+
+**Goals:**
+- **E.T.'s goal:** his only "goal" is an involuntary emotional response to being cared for, expressed as light.
+- **Elliott's goal:** to comfort E.T. and, once he notices the glow responds to kindness
 
 Now **sketch a 3 storyboards** of the interaction you are recreating. (The number may depend on the thing you drew, but stretch your thinking!) They
 don't need to be beautiful, but they must capture and communicate not only the behavior of the light, but how it affects
@@ -111,6 +126,10 @@ and the people around it. If you're new to storyboarding, read
 [this explanation](https://www.nngroup.com/articles/storyboards-visualize-ideas/).
 
 **Include pictures of your storyboards here.**
+
+<img width="4284" height="5712" alt="IMG_7909" src="https://github.com/user-attachments/assets/357eed01-ceb2-42f2-b38d-8dc97d272cc4" />
+<img width="4284" height="5712" alt="IMG_7908" src="https://github.com/user-attachments/assets/a6eaacde-ba91-4631-812d-85c66840189f" />
+<img width="4284" height="5712" alt="IMG_7907" src="https://github.com/user-attachments/assets/c11db3fb-0708-4346-875f-d39b4882dd33" />
 
 Use the storyboards to decide what interaction to prototype.
 
