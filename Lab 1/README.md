@@ -181,6 +181,9 @@ video feed of whichever scene you want to capture.)
 
 **Include your first attempts at recording the wizarded set-up here.**
 
+https://www.youtube.com/shorts/dc3uiMTK8dU
+
+
 ## Part E. (optional) Costume the Device
 
 Only now should you worry about what the device looks like. Costume your phone so it reads
@@ -207,6 +210,12 @@ who doesn't should come away understanding what it's famous for. How might you i
 acknowledging their contributions, and credit any other influences (YouTube,
 Github, Twitter, a friend who lent you a lamp) that informed your recreation.
 
+https://www.youtube.com/shorts/dc3uiMTK8dU
+
+
+<img width="5712" height="4284" alt="IMG_7915" src="https://github.com/user-attachments/assets/1ef565ca-3e99-4374-8755-0185a50c0df0" />
+
+
 ---
 
 # Part 2 — ReMastering the light
@@ -222,6 +231,19 @@ wasn't clear.
 
 **Who were the other groups you kibitzed with? Add links to their project pages here.**
 **Summarize the feedback you got from your partners here.**
+
+https://github.com/vd269-dot/Vasudha-Lab-Hub/tree/Fall2026/Lab%201
+
+> **Groups we kibitzed with:**
+> 1. [(link)](https://github.com/vd269-dot/Vasudha-Lab-Hub/tree/Fall2026/Lab%201)
+> 2. [(link)](https://github.com/DanielXing373/Interactive-Lab-Hub/tree/Fall2026)
+> 3. [(link)](https://github.com/MortalJin/Interactive-Lab-Hub/tree/Fall2026/Lab%201)
+
+> **Feedback we got:**
+> 1. Start off on a red/orange color and transition to something more friendly, red/orange read more like alarm than comfort.
+> 2. Using gradients instead of hard color jumps could make the transition feel smoother and more alive.
+> 3. Didn't know it was E.T. specifically, but could tell the entity felt good about being given candy, so the core interaction read even without knowing the reference.
+
 
 ## Remix, Update, or Critique the Master
 
