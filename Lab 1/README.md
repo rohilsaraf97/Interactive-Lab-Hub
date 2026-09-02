@@ -150,6 +150,12 @@ it aloud.
 **Are there key moments in the interaction where things could go in a different direction?**
 Iterate your storyboards to capture key non-sequential aspects of the interaction. 
 
+Better on paper than acted out: A single glow color felt flat once we acted it out. The transition mattered more than we thought going from neutral to yellow to amber as the kindness lands reads way better live than just flipping the light on.
+
+New ideas on our feet: Starting from a neutral glow instead of fully dark worked well, it makes it feel like E.T.'s light is already alive and kindness just shifts its color/warmth, not a mechanical on/off. We also added warm, peaceful music playing under the color change, it helped capture the emotion way more than light alone.
+
+Non-sequential moments: If Elliott keeps being kind (offers food again, stays close) after the first glow shift, the light could keep climbing past amber to something brighter. If the moment just passes, it holds at amber. We want to storyboard both branches: amber-and-hold vs. amber-climbing-higher with repeated kindness.
+
 ## Part C. Prototype the Light (light first!)
 
 Use your smartphone as the light of your device. Open the browser on your phone
