@@ -263,6 +263,14 @@ combine them):
 We will grade this second pass with an emphasis on **creativity** and on how well
 your response engages with what your master was really doing.
 
+We're addressing two weaknesses that came up across both feedback rounds: people couldn't always tell it was E.T., and starting on red/orange read as alarm instead of comfort. For this remix, we're dropping the "must be recognized as E.T." requirement and treating it as a general gratitude light instead, since the emotional interaction read clearly even when people didn't know the character. We're also fixing the color logic: starting from a neutral/cool tone instead of red/orange, and using a smooth gradient instead of hard color jumps, so the shift into warmth feels gradual and earned rather than a sudden switch. Also adding peaceful warm music when ET feels compassionate and grateful.
+
+Updated Story board:
+
+<img width="4284" height="5712" alt="IMG_7916" src="https://github.com/user-attachments/assets/35ee0540-20eb-457c-bfa5-c005c04a128f" />
+
+Video: 
+
 **Document everything here — especially the storyboard and video. Photos of the
 prototype are great too.**
 
