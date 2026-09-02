@@ -269,7 +269,7 @@ Updated Story board:
 
 <img width="4284" height="5712" alt="IMG_7916" src="https://github.com/user-attachments/assets/35ee0540-20eb-457c-bfa5-c005c04a128f" />
 
-Video: 
+Video: https://youtube.com/shorts/L86rGn1VtBo?is=9yZM0PJBNNLctoDu
 
 **Document everything here — especially the storyboard and video. Photos of the
 prototype are great too.**
