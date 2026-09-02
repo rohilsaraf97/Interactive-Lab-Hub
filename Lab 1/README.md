@@ -135,6 +135,8 @@ Use the storyboards to decide what interaction to prototype.
 
 **Summarize the feedback you got here.**
 
+Feedback we got: Reactions were mixed. Most people picked up on the core interaction, that the glow was some kind of gratitude response tied to being fed/cared for. One person correctly guessed it was E.T. outright. But several others couldn't place the character, a few thought the drawing was just "a poorly drawn animal," not specifically E.T. This told us the interaction itself reads clearly on paper, but the character design in our storyboards isn't distinct enough on its own, we're relying on people already knowing the reference rather than the drawing carrying it.
+
 ## Part B. Act out the Interaction
 
 Physically act out the interaction you planned. For now, just pretend the light
