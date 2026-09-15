@@ -233,9 +233,9 @@ a clock that tells you when you can you snack again
 |---|---|
 | Midnight | Buddy yawns, screen dims briefly, ticks + progress line reset |
 
-For your diagram: draw Buddy's 7 faces in a row (content → sleepy → curious → shocked → starstruck → winding down → content), then two side branches — "A on stage 5 → tick fills" and "hold B → ticks + line appear."
-
 **Put the names of the people you gave feedback to here. (Even better, add links to their repos here!)**
+
+https://github.com/LaboriouslyExquisite/Interactive-Lab-Hub/blob/Fall2026/Lab%202/README.md
 
 # Lab 2 Part 2
 
