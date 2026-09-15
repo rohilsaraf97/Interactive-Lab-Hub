@@ -158,6 +158,9 @@ You can look in `image.py` for an example of how to display an image on the scre
 
 \*\*\***Include a picture of your own Raspberry Pi displaying the piscreen.service with your unique MAC address. Additionally, please provide another picture showing the successful completion of the screen test.**\*\*\*
 
+<img width="3024" height="4032" alt="IMG_8189" src="https://github.com/user-attachments/assets/b42e61ff-6ca1-4900-b1af-6b73552a2666" />
+<img width="4284" height="5712" alt="IMG_8190" src="https://github.com/user-attachments/assets/921a56bf-536b-4bc0-bf7f-b7065ca88b7c" />
+
 
 ## Part D. 
 ### Set up the Display Clock Demo
@@ -182,6 +185,9 @@ Now you should be able to edit python scripts with Thonny on your Pi.
 Option 3. A nowadays often preferred method is to use Microsoft [VS code to remote connect to the Pi](https://www.raspberrypi.com/news/coding-on-raspberry-pi-remotely-with-visual-studio-code/). This gives you access to a fullly equipped and responsive code editor with terminal and file browser.  
 
 Pro Tip: Using tools like [code-server](https://coder.com/docs/code-server/latest) you can even setup a VS Code coding environment hosted on your raspberry pi and code through a web browser on your tablet or smartphone! 
+
+<img width="4032" height="3024" alt="IMG_8215" src="https://github.com/user-attachments/assets/ab06acdc-8a60-41bb-b401-a0902d331f5d" />
+
 
 ## Part E. Read Part 2. Sketch and brainstorm further interactions and features you would like for your clock.
 
