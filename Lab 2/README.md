@@ -239,11 +239,13 @@ a clock that tells you when you can you snack again
 |---|---|
 | "No snacks yet — start snacking!" + day progress bar | Filled dots = snacks had. Empty dots = windows still possible today. Day progress bar shown too. |
 
-Release B → back to default screen.
+Release B, back to default screen.
 
 ### Midnight
 
 Snack count and timer reset. Screen goes back to Ready.
+
+<img width="5711" height="3942" alt="IMG_8216" src="https://github.com/user-attachments/assets/00fee5f5-d6d8-4460-bb12-0a67a718218d" />
 
 **Put the names of the people you gave feedback to here. (Even better, add links to their repos here!)**
 
