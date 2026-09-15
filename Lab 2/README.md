@@ -202,36 +202,53 @@ We strongly discourage literal digital or analog clock display: Be creative.
 
 a clock that tells you when you can you snack again
 
-## Keroppi
+## Snack Clock
 
-## Stage Cycle
+**Idea:** A clock that shows when you can snack again. Snack windows are 6 hours apart, based on your last confirmed snack — not a fixed schedule.
 
-| Stage | Name | Background | Eyes | Mouth | Extra |
-|---|---|---|---|---|---|
-| 1 | Content | Blue-gray | Closed, curved (^_^) | Small smile | Faint blush |
-| 2 | Sleepy | Blue-gray, warming | Half-lidded | Flat line | — |
-| 3 | Curious | Yellow/orange | Round dots, alert | Small "o" | Slight blush |
-| 4 | Shocked | Red/orange | Huge whites, tiny pupils | Wavy open | Sweat drop |
-| 5 | Starstruck | Bright yellow/green | Star pupils | Big open smile | Sparkles around head |
-| 6 | Winding Down | Amber, fading | Half-lidded | Small relaxed curve | Fading blush |
-| 7 | Content (reset) | Blue-gray | Closed (^_^) | Small smile | Faint blush |
+### Default Screen
 
-3 cycles/day (fixed snack windows, e.g. 10am / 3pm / 8pm).
-
-## Buttons
-
-| Button | Trigger | Behavior |
+| State | When | Shows |
 |---|---|---|
-| A | Pressed during Stage 5 | Marks window complete, resets to Stage 1 |
-| A | Pressed any other stage | Buddy's eyes go to a "?" look for a second, no reset |
-| B | Short press | Small speech bubble shows countdown to next window, fades after ~2s |
-| B | Hold / double-press | Buddy shrinks aside; 3 window ticks + day-progress line appear; Buddy returns after a few seconds |
+| Ready | Before first snack of the day | Buddy, Ready pose — bright background, open eyes, smile |
+| Stage cycle | After first snack | Buddy moves through Stages 1–7 based on time since last snack |
 
-## Day Boundary
+### Stage Cycle
 
-| Event | Behavior |
+| Stage | Name | Meaning | Background | Eyes | Mouth | Extra |
+|---|---|---|---|---|---|---|
+| 1 | Content | Just snacked | Blue-gray | Closed (^_^) | Small smile | Blush |
+| 2 | Sleepy | Early wait | Blue-gray, warming | Half-lidded | Flat line | — |
+| 3 | Curious | Window coming up | Yellow/orange | Round, alert | Small "o" | Blush |
+| 4 | Shocked | Right before window opens | Red/orange | Wide eyes, small pupils | Wavy open | Sweat drop |
+| 5 | Starstruck | Window open, snack now | Bright yellow/green | Star pupils | Big smile | Sparkles |
+| 6 | Winding Down | Window closing | Amber | Half-lidded | Small relaxed curve | Fading blush |
+| 7 | Content (reset) | Back to start, next timer begins | Blue-gray | Closed (^_^) | Small smile | Blush |
+
+### Button A Confirm Snack
+
+| Trigger | Behavior |
 |---|---|
-| Midnight | Buddy yawns, screen dims briefly, ticks + progress line reset |
+| Pressed during Ready (before first snack) | Logs snack #1, starts the day's cycle, moves to Stage 1 |
+| Pressed during Stage 5 (window open) | Confirms snack, logs it, resets timer from now, moves to Stage 1. Shows "confirmed!" message |
+| Pressed during any other stage | Does NOT log anything. Shows a short message matching the current stage — e.g. "not yet, still waiting" (Stage 2), "almost time" (Stage 4), "window's closing" (Stage 6) |
+
+### Button B — Status Check
+
+| Before first snack | After first snack |
+|---|---|
+| "No snacks yet — start snacking!" + day progress bar | Filled dots = snacks had. Empty dots = windows still possible today. Day progress bar shown too. |
+
+Release B → back to default screen.
+
+### Midnight
+
+Snack count and timer reset. Screen goes back to Ready.
+
+---
+
+### To revise later
+Add a pulse animation — faster from Stage 2→4, fastest at Stage 5, slower through Stage 6.
 
 **Put the names of the people you gave feedback to here. (Even better, add links to their repos here!)**
 
