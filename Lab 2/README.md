@@ -245,11 +245,6 @@ Release B → back to default screen.
 
 Snack count and timer reset. Screen goes back to Ready.
 
----
-
-### To revise later
-Add a pulse animation — faster from Stage 2→4, fastest at Stage 5, slower through Stage 6.
-
 **Put the names of the people you gave feedback to here. (Even better, add links to their repos here!)**
 
 https://github.com/LaboriouslyExquisite/Interactive-Lab-Hub/blob/Fall2026/Lab%202/README.md
