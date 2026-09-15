@@ -194,7 +194,25 @@ We strongly discourage literal digital or analog clock display: Be creative.
 
 ** Insert ideas, sketches, [Verplank diagrams](https://ccrma.stanford.edu/courses/250a-fall-2004/IDSketchbok.pdf)), storyboards for your ideas **
 
+a clock that tells you when you can you snack again
 
+| Stage | Name | Background Color | Icon / Shape | Bar | Motion |
+|---|---|---|---|---|---|
+| 1 | Just ate | Muted blue-gray | Calm face (2 dots + flat line) or plate w/ crumbs | Empty | None (static) |
+| 2 | Patience... | Blue-gray, slowly warming | Same face, or small "zzz"/snail icon | Slowly filling, left→right | Very slow |
+| 3 | Getting close | Warming to yellow/orange | Triangle/arrow icon, leaning forward (rotating) | More filled | Slight pulse (5% grow/shrink) |
+| 4 | Basically time | Saturated orange/red | Icon nearly tipped over | Nearly full | Fast pulse + blinking border |
+| 5 | SNACK TIME | Bright yellow/green | "Cookie" (circle w/ bite cut out) + scattered confetti dots | N/A (window open) | Confetti shuffles, icon pops |
+| 6 | Window closing | Amber (fading from bright) | Cookie shrinking over time | Draining, right→left | Icon shrinks gradually |
+| 7 | Back to stage 1 | Reset to muted blue-gray | Reset to calm face | Reset to empty | None |
+
+**Buttons:**
+
+| Button | Action | When it does something | What happens |
+|---|---|---|---|
+| A ("I snacked") | Confirms snack taken | Only meaningful during stage 5 | Resets cycle early to stage 1 |
+| A (outside window) | Same button, wrong time | Stages 1–4, 6 | Mock-guilty message flashes ("...not time yet"), no reset |
+| B ("How long left?") | Peek at real countdown | Any stage, hold-to-reveal | Overlays numeric time-remaining on current stage visual, fades back on release |
 
 **Put the names of the people you gave feedback to here. (Even better, add links to their repos here!)**
 
