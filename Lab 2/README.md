@@ -202,23 +202,38 @@ We strongly discourage literal digital or analog clock display: Be creative.
 
 a clock that tells you when you can you snack again
 
-| Stage | Name | Background Color | Icon / Shape | Bar | Motion |
+## Character: "Buddy" (draw as any simple creature you like)
+
+## Stage Cycle
+
+| Stage | Name | Background | Eyes | Mouth | Extra |
 |---|---|---|---|---|---|
-| 1 | Just ate | Muted blue-gray | Calm face (2 dots + flat line) or plate w/ crumbs | Empty | None (static) |
-| 2 | Patience... | Blue-gray, slowly warming | Same face, or small "zzz"/snail icon | Slowly filling, left→right | Very slow |
-| 3 | Getting close | Warming to yellow/orange | Triangle/arrow icon, leaning forward (rotating) | More filled | Slight pulse (5% grow/shrink) |
-| 4 | Basically time | Saturated orange/red | Icon nearly tipped over | Nearly full | Fast pulse + blinking border |
-| 5 | SNACK TIME | Bright yellow/green | "Cookie" (circle w/ bite cut out) + scattered confetti dots | N/A (window open) | Confetti shuffles, icon pops |
-| 6 | Window closing | Amber (fading from bright) | Cookie shrinking over time | Draining, right→left | Icon shrinks gradually |
-| 7 | Back to stage 1 | Reset to muted blue-gray | Reset to calm face | Reset to empty | None |
+| 1 | Content | Blue-gray | Closed, curved (^_^) | Small smile | Faint blush |
+| 2 | Sleepy | Blue-gray, warming | Half-lidded | Flat line | — |
+| 3 | Curious | Yellow/orange | Round dots, alert | Small "o" | Slight blush |
+| 4 | Shocked | Red/orange | Huge whites, tiny pupils | Wavy open | Sweat drop |
+| 5 | Starstruck | Bright yellow/green | Star pupils | Big open smile | Sparkles around head |
+| 6 | Winding Down | Amber, fading | Half-lidded | Small relaxed curve | Fading blush |
+| 7 | Content (reset) | Blue-gray | Closed (^_^) | Small smile | Faint blush |
 
-**Buttons:**
+3 cycles/day (fixed snack windows, e.g. 10am / 3pm / 8pm).
 
-| Button | Action | When it does something | What happens |
-|---|---|---|---|
-| A ("I snacked") | Confirms snack taken | Only meaningful during stage 5 | Resets cycle early to stage 1 |
-| A (outside window) | Same button, wrong time | Stages 1–4, 6 | Mock-guilty message flashes ("...not time yet"), no reset |
-| B ("How long left?") | Peek at real countdown | Any stage, hold-to-reveal | Overlays numeric time-remaining on current stage visual, fades back on release |
+## Buttons
+
+| Button | Trigger | Behavior |
+|---|---|---|
+| A | Pressed during Stage 5 | Marks window complete, resets to Stage 1 |
+| A | Pressed any other stage | Buddy's eyes go to a "?" look for a second, no reset |
+| B | Short press | Small speech bubble shows countdown to next window, fades after ~2s |
+| B | Hold / double-press | Buddy shrinks aside; 3 window ticks + day-progress line appear; Buddy returns after a few seconds |
+
+## Day Boundary
+
+| Event | Behavior |
+|---|---|
+| Midnight | Buddy yawns, screen dims briefly, ticks + progress line reset |
+
+For your diagram: draw Buddy's 7 faces in a row (content → sleepy → curious → shocked → starstruck → winding down → content), then two side branches — "A on stage 5 → tick fills" and "hold B → ticks + line appear."
 
 **Put the names of the people you gave feedback to here. (Even better, add links to their repos here!)**
 
