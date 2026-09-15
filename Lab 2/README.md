@@ -202,7 +202,7 @@ We strongly discourage literal digital or analog clock display: Be creative.
 
 a clock that tells you when you can you snack again
 
-## Character: "Buddy" (draw as any simple creature you like)
+## Keroppi
 
 ## Stage Cycle
 
