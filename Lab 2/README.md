@@ -312,6 +312,8 @@ Do take advantage of having done the previous iteration to refine and simplify y
 
 **Updated Diagram:**
 
+<img width="5712" height="4284" alt="IMG_8407" src="https://github.com/user-attachments/assets/da201505-d904-4314-b2fc-100acfcba9a4" />
+
 ***Put a copy of your code in your Lab 2 Github repo.***
 
 ***Take a video of your PiClock.***
