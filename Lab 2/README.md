@@ -250,6 +250,8 @@ Snack count and timer reset. Screen goes back to Ready.
 **Put the names of the people you gave feedback to here. (Even better, add links to their repos here!)**
 
 https://github.com/LaboriouslyExquisite/Interactive-Lab-Hub/blob/Fall2026/Lab%202/README.md
+Max Corkran
+https://github.com/cgyh98/Interactive-Lab-Hub/tree/Fall2026/Lab%202
 
 # Lab 2 Part 2
 
@@ -259,6 +261,11 @@ https://github.com/LaboriouslyExquisite/Interactive-Lab-Hub/blob/Fall2026/Lab%20
 
 2. Look at and give feedback on the Part E. for at least 3 other people in the class and get 3 people to comment on your Part E!)
 **Put the feedback for your ideas here.**
+
+Feedback:
+I love it! Also maybe hydration?? That would be my first thought
+Snacks are the best! Your snack clock is very fun and very thought out and I can see the tie in between an animated characters body language to denote how much time has passed since the user last ate a snack. I think some fun metrics to add to the clock would be how many snacks you did eat throughout the day and perhaps changing how the character (physically, fatter, skinner, based on the amount of snacks it had during the week). Overall very good design, and you can go very far with it. The only feedback I have is perhaps adding interaction based on the amount of snacks eaten would also be interesting to implement.
+I think that the concept is cute but there are some states which may confuse the user. I associate a snack time with hunger so I think there could be imagery that explains that relationship better. Maybe a thought bubble with food? Also I don't know how the buttons will work during the midnight snack time since the user would be asleep
 
 ## Update your Lab Hub
 
@@ -276,6 +283,8 @@ Start small, pick just one element of your overall idea, just to show you have a
 
 After you edit and work on the scripts for Lab 2, the files should be upload back to your own GitHub repo! You can push to your personal github repo by adding the files here, commiting and pushing.
 
+https://youtube.com/shorts/vckRZVUIjEU?is=clBlUczalaxfw2vw
+
 ```
 (venv) pi@raspberrypi:~/Interactive-Lab-Hub/Lab 2 $ git add .
 (venv) pi@raspberrypi:~/Interactive-Lab-Hub/Lab 2 $ git commit -m 'your commit message here'
@@ -288,16 +297,28 @@ After that, Git will ask you to login to your GitHub account to push the updates
 
 Do take advantage of having done the previous iteration to refine and simplify your design.
 
-** Insert any updates ideas, sketches, [Verplank diagrams](https://ccrma.stanford.edu/courses/250a-fall-2004/IDSketchbok.pdf))!, storyboards for your ideas **
+**Updated Concept:** Daphne Clock follows a fixed meal schedule (breakfast/lunch/dinner), with up to 2 snacks allowed in between each meal. A character named "Daphne" reacts through different states, calm after eating, alert as a meal approaches, excited when the window opens, and sleeping overnight after dinner. Button A logs meals/snacks depending on the current state; Button B shows a status screen with meals had/missed, snacks had, and a day-progress bar.
 
+| Stage | Meaning |
+|---|---|
+| Meal approaching | <20 min before a meal window opens |
+| Meal open | Currently within a meal's eating window |
+| Gap (between meals) | Snack-eligible period, max 2 snacks |
+| Overnight gap | After dinner closes until breakfast approaches — sleep state |
 
-\*\*\***Put a copy of your code in your Lab 2 Github repo.**\*\*\*
+**Button A:** logs a meal if one's open, logs a snack if in a gap (up to 2), or shows a message explaining why it can't (e.g. "not open yet," "no more snacks till next meal").
 
-\*\*\***Take a video of your PiClock.**\*\*\*
+**Button B:** hold to see meals had/missed, snacks had today, and how far through the day you are.
 
+**Updated Diagram:**
+
+***Put a copy of your code in your Lab 2 Github repo.***
+
+***Take a video of your PiClock.***
+https://youtube.com/shorts/7cZNvw4GQWU?is=jyQqLsozz1SM_0Ln
+
+**Contributions / AI use:** We used ChatGPT to generate animated GIFs of a custom character we named "Daphne," used across the different display states (approaching, meal open, sleeping, etc.). We used Claude to design the meal/snack state machine and button logic, and write and debug the Python code controlling the animations.
 
 As always, make sure you document contributions and ideas from others (and AI) explicitly in your writeup.
-
-You are permitted (but not required) to work in groups and share a turn in; you are expected to make equal contribution on any group work you do, and N people's group project should look like N times the work of a single person's lab.  Make sure the page for the group turn in is linked to your personal Interactive Lab Hub page. 
 
 
