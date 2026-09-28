@@ -168,28 +168,24 @@ There is no correct value. A system that takes drink orders and a system that li
 
 ## D. Storyboard
 
-A voice memory game. It says a growing list of words, you repeat the whole list back, and it gets one word longer each round until you miss.
+We are building a memory game between me and the device. It says a word, I repeat it and add a new one, it repeats the whole list and adds another, and so on, the list keeps growing until one of us messes up.
 
 **Dialogue script, with pauses:**
 
 | Who | Line | Wait |
 |---|---|---|
-| Device | "Let's play a memory game. I'll say some words, you say them back in order. Ready?" | 1s |
-| Person | "Yeah" | |
-| Device | "Round 1: apple." | |
-| Device | "Your turn." | listens, 2s silence (short list, quick recall) |
-| Person | "Apple" | |
-| Device | "Nice. Round 2: apple, chair." | |
+| Device | "Let's play. First word: apple." | |
+| Device | "Your turn." | listens, 2s silence |
+| Me | "Apple, chair" | |
+| Device | "Apple, chair, lamp." | |
 | Device | "Your turn." | listens, 2.5s silence |
-| Person | "Apple... chair" | |
-| Device | "Round 3: apple, chair, lamp." | |
-| Device | "Your turn." | listens, 3s silence (longer list = longer thinking pause) |
-| Person | "Apple, chair... um... lamp?" | |
-| Device | "You got it. Round 4:..." | |
-| ... | (continues, +0.5s silence per round to allow for longer recall) | |
-| Device (on miss) | "That was lamp, not sofa. You made it to round 4. Want to try again?" | 1s |
+| Me | "Apple, chair, lamp, sofa" | |
+| Device | "Apple, chair, lamp, sofa, window." | |
+| Device | "Your turn." | listens, 3s silence (longer list = more recall time) |
+| ... | (continues, +0.5s silence per round) | |
+| Device (on my miss) | "That's a miss — it was window, not curtain. We made it to 5 words." | 1s |
 
-We sketched the round structure on paper first, then wrote out sample dialogue for rounds 1-4 to figure out where pauses needed to grow as the list got longer. We picked simple, unrelated nouns (apple, chair, lamp) instead of a themed list so recall difficulty comes from length, not meaning.
+**Process:**
 
 ## E. Acting out the dialogue
 
