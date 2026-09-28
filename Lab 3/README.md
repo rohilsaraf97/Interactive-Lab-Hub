@@ -185,7 +185,8 @@ We are building a memory game between me and the device. It says a word, I repea
 | ... | (continues, +0.5s silence per round) | |
 | Device (on my miss) | "That's a miss — it was window, not curtain. We made it to 5 words." | 1s |
 
-**Process:**
+<img width="5712" height="4284" alt="IMG_8566" src="https://github.com/user-attachments/assets/ee541ae6-a681-4578-970b-716f162ef5a8" />
+
 
 ## E. Acting out the dialogue
 
