@@ -108,6 +108,7 @@ The demo script also shows `--output-raw`, which streams audio to the speaker as
 
 \*\***Write your own shell file to use your favorite of these TTS engines to have your Pi greet you by name.**\*\*
 (This shell file should be saved to your own repo for this lab.)
+File saved.
 
 \*\***Then answer: Is the same greeting, in these different voices, the same greeting? Describe one concrete way the voice changed what the utterance seemed to mean or who seemed to be speaking.**\*\*
 
@@ -130,8 +131,10 @@ The transcript is not the interesting output here — the timings are. Run it ag
 Available sizes, smallest first: `tiny.en`, `base.en`, `small.en`, `medium.en`. The `.en` variants are English-only and faster than their multilingual counterparts at the same size.
 
 \*\***Record a few seconds of your own speech (`arecord -d 5 -f cd -c 1 -r 16000 test.wav`) and transcribe it with at least two model sizes. Report the real-time factor for each. At what point does the accuracy improvement stop being worth the delay, for a system that has to answer you?**\*\*
+The tiny model actually worked alright for most use cases. The small, tiny and base models all had shorter model load times so the performance diff was not very apparent. However, the medium model took a long time to load didn't offer any significant performance improvements. The medium and small models performed better when it came to transcribing proper nouns such as names. But for common language, I would value response times more to make the system feel more snappy.
 
 \*\***Write your own script that verbally asks for a numerical input (a phone number, zipcode, number of pets) and records the answer the respondent provides.**\*\* Numbers are a good stress test — transcription systems make characteristic errors on digit strings, and you will want to know what they are before you design around them.
+Added a script which records my NetID
 
 ## C. Turn-taking: knowing when someone has stopped talking
 
@@ -165,15 +168,28 @@ There is no correct value. A system that takes drink orders and a system that li
 
 ## D. Storyboard
 
-Storyboard and/or use a Verplank diagram to design a speech-enabled device. (Stuck? Make a device that talks for dogs. If that is too stupid, find an application that is better than that.)
+A voice memory game. It says a growing list of words, you repeat the whole list back, and it gets one word longer each round until you miss.
 
-\*\***Post your storyboard and diagram here.**\*\*
+**Dialogue script, with pauses:**
 
-Write out what you imagine the dialogue to be. Use cards, post-its, or whatever method helps you develop alternatives or group responses.
+| Who | Line | Wait |
+|---|---|---|
+| Device | "Let's play a memory game. I'll say some words, you say them back in order. Ready?" | 1s |
+| Person | "Yeah" | |
+| Device | "Round 1: apple." | |
+| Device | "Your turn." | listens, 2s silence (short list, quick recall) |
+| Person | "Apple" | |
+| Device | "Nice. Round 2: apple, chair." | |
+| Device | "Your turn." | listens, 2.5s silence |
+| Person | "Apple... chair" | |
+| Device | "Round 3: apple, chair, lamp." | |
+| Device | "Your turn." | listens, 3s silence (longer list = longer thinking pause) |
+| Person | "Apple, chair... um... lamp?" | |
+| Device | "You got it. Round 4:..." | |
+| ... | (continues, +0.5s silence per round to allow for longer recall) | |
+| Device (on miss) | "That was lamp, not sofa. You made it to round 4. Want to try again?" | 1s |
 
-\*\***Please describe and document your process.**\*\*
-
-Your script should include the pauses. Where does your device wait, and for how long? You now know from Part C that this is a parameter you have to choose, not something that happens for free.
+We sketched the round structure on paper first, then wrote out sample dialogue for rounds 1-4 to figure out where pauses needed to grow as the list got longer. We picked simple, unrelated nouns (apple, chair, lamp) instead of a themed list so recall difficulty comes from length, not meaning.
 
 ## E. Acting out the dialogue
 
