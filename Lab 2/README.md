@@ -319,7 +319,7 @@ Do take advantage of having done the previous iteration to refine and simplify y
 ***Take a video of your PiClock.***
 https://youtube.com/shorts/7cZNvw4GQWU?is=jyQqLsozz1SM_0Ln
 
-**Contributions / AI use:** We used ChatGPT to generate animated GIFs of a custom character we named "Daphne," used across the different display states (approaching, meal open, sleeping, etc.). We used Claude to design the meal/snack state machine and button logic, and write and debug the Python code controlling the animations.
+**Contributions / AI use:** We used ChatGPT to generate animated GIFs of a custom characterar we named "Daphne," used across the different display states (approaching, meal open, sleeping, etc.). We used Claude to design the meal/snack state machine and button logic, and write and debug the Python code controlling the animations.
 
 As always, make sure you document contributions and ideas from others (and AI) explicitly in your writeup.
 
