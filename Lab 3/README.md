@@ -147,7 +147,7 @@ We use a **voice activity detector** (VAD) to segment the microphone stream into
 (.venv) $ python listen.py
 ```
 
-Speak, pause, and watch it transcribe. Now change the endpointing threshold — the amount of silence the system requires before it decides your turn is over:
+Speak, pause, and watch it transcribe. Now change the endpointing threshold, the amount of silence the system requires before it decides your turn is over:
 
 ```
 (.venv) $ python listen.py --min-silence 0.2
@@ -157,6 +157,10 @@ Speak, pause, and watch it transcribe. Now change the endpointing threshold — 
 \*\***Try both extremes, and something in between. Describe what each one feels like to talk to. Note specifically: at 0.2s, what kinds of normal speech get cut off? At 1.5s, what does the delay make the system seem like?**\*\*
 
 There is no correct value. A system that takes drink orders and a system that listens to someone think out loud want very different thresholds, and the right one depends on what your users are doing with their pauses.
+
+When the minimum silence is small (0.2 s), the system cuts me off too soon. It treats any short pause as the end of my turn, even when I'm just thinking, coming up with the next word, or saying filler words like "um." A single sentence ends up split into several pieces, and each piece gets transcribed on its own. With a long threshold like 1.5 s, it never interrupts me, but there is a significant wait after I finish my sentence, and the system feels laggy. Because transcription time gets added on top of the wait, I couldn't tell whether it had heard me, and I was tempted to repeat myself.
+
+We settled on 0.5 s, which is a good middle ground for most speech. It's still not perfect for our memory game, because players often pause before adding their new word. To handle that, the game keeps listening for an extra 2.5 s whenever the list isn't complete yet. We also added a beep and a solid LED when the mic opens, so the player knows when it's their turn to talk instead of guessing from the silence.
 
 ### The complete loop
 
@@ -183,7 +187,7 @@ We are building a memory game between me and the device. It says a word, I repea
 | Device | "Apple, chair, lamp, sofa, window." | |
 | Device | "Your turn." | listens, 3s silence (longer list = more recall time) |
 | ... | (continues, +0.5s silence per round) | |
-| Device (on my miss) | "That's a miss — it was window, not curtain. We made it to 5 words." | 1s |
+| Device (on my miss) | "That's a miss, it was window, not curtain. We made it to 5 words." | 1s |
 
 <img width="5712" height="4284" alt="IMG_8566" src="https://github.com/user-attachments/assets/ee541ae6-a681-4578-970b-716f162ef5a8" />
 
@@ -194,6 +198,26 @@ Find a partner, and *without sharing the script with your partner* try out the d
 
 \*\***Describe if the dialogue seemed different than what you imagined when it was acted out, and how.**\*\*
 
+The dialogue during the trial went fairly much as we expected. The difference was the lag. When I paused to simulate the device's processing delay, it wasn't what my subject expected. He seemed confused and felt like he had done something wrong. The subject was also unsure about the device repeating the whole sequence, since that is not standard in the gameplay of this game.
+
+https://youtu.be/xjf7KC0qnVY
+
+We gave feedback to these teams:
+Max Corkrans Coffee Order device
+Max's coffee machine device worked great and recorded my order too. I did have to rely on the screen to confirm my order and what the machine had heard, and it did get it wrong sometimes. Adding the screen, the repetitions, and the ability to go back and start over definitely helped, and it made for a full audio and visual experience with more than just voice to rely on.
+
+Viktor's team: https://github.com/LaboriouslyExquisite/Interactive-Lab-Hub/blob/Fall2026/Lab%203/README.md
+Great idea! In fact, it would have been really useful for recording these demos. Does this mean the device is always listening? Is there an indication of when it is? Also, in the final video, is the device's audio instruction recorded too? This is amazing though! I could see it being used for hands-free recording of tutorials, cooking videos, or lectures.
+
+Gabriela's team: https://github.com/cgyh98/Interactive-Lab-Hub/tree/Fall2026/Lab%203
+I like that you switched from the fridge to the plant. A plant that asks for things is more useful, and it's the opposite of a typical assistant. Writing the dialogue out was a good move, because it exposed that the plant only has a light sensor and can't know which way to turn. One idea is to lean into that. Instead of one command, the plant could react as the user turns the pot ("warmer," "better," "worse"), so the guessing game becomes an interaction. It also tells the user the plant is paying attention. On timing, I agree that 0.4 s is too short when people are doing something physical between lines. You could use a longer pause, or have the plant wait until it senses the light has stopped changing before it listens.
+
+We got feedback from the above teams as well
+Team 1: The system checks the box of being interactive, and it uses STT and TTS well. Using a person's verbal response to test whether they truly memorized words is interesting, since similar online games test visual memory and this one tests verbal memory. It could be fun on a road trip to keep people engaged with each other. A local multiplayer mode would be a great addition.
+
+Team 2: So awesome. It feels intuitive, like there is a language model running behind it. However, the pauses are too long, and it's easy to mislead it by saying "wrong" even when it wasn't wrong.
+
+Team 3: I wasn't sure when to press the button, or when to start speaking. Sometimes my first words might get cut off.
 
 ---
 
@@ -204,9 +228,35 @@ For Part 2, you will redesign the interaction with the speech-enabled device usi
 ## Prep for Part 2
 
 1. What are concrete things that could use improvement in the design of your device? For example: wording, timing, anticipation of misunderstandings.
+
+Misunderstandings: Speech recognition sometimes hears the wrong word. We added a call-out: say "wrong" or press the button, then say the correct word, and the Pi swaps it in and continues. Players get 3 call-outs per game.
+Wording: "Your turn." was slow and easy to talk over, so we replaced it with a beep and a solid LED. We also made the error messages specific, like "You forgot to add a new word."
+Timing: A fixed silence cut players off when they paused before their new word. The turn now ends after 0.5 s of silence, and the Pi listens up to 2.5 s more if the list is incomplete.
+Goal: The game now ends with a win after 10 rounds, and the Pi occasionally slips up on purpose for the player to catch.
+
 2. What are other modes of interaction *beyond speech* that you might also use to clarify how to interact? In particular: how does someone know when the device is listening, and when it is thinking? You have a screen and an LED.
+
+The player can't see a screen in this game, so we use the LED and sound to show what the device is doing:
+
+Solid LED plus a beep: it's listening to you.
+Pulsing LED: it's speaking.
+LED off: it's thinking.
+
 3. Make a new storyboard, diagram and/or script based on these reflections.
+
+Device: "Memory game! ... Press the button to start."
+Me: (presses the button)
+Device: "I'll start. Banana." (beep, LED solid)
+Me: "Banana, laptop."
+Device: "You added laptop." (2 s to call out)
+Device: "Round 2. Banana, laptop, zebra."
+If the recognizer mishears me: I say "Wrong, last word paper," and the device says "Got it. Let's continue."
+If the Pi slips up: I say "Wrong!" or press the button, and the device says "Busted! I said candle, but it was laptop."
+
+
 4. (optional) Integrate [input devices](inputs.md) in the system
+
+We added a SparkFun Qwiic Button for the call-out and the status LED.
 
 ## Prototype your system
 
@@ -217,25 +267,46 @@ The system should:
 
 *Document how the system works.*
 
+The Pi says a word. You repeat the whole list and add one new word, then the Pi repeats everything and adds its own. Survive 10 rounds to win. If the recognizer mishears you, call it out and fix the word. If the Pi slips up on purpose, call that out instead.
+
 *Include videos or screencaptures of both the system and the controller.*
+
+<img width="3520" height="1980" alt="IMG_8621" src="https://github.com/user-attachments/assets/e3718065-be94-4f0f-8d1f-584defbcea4c" />
+
+https://youtu.be/b-19xku7f0A
 
 ## Test the system
 
 Try to get at least two people to interact with your system. (Ideally, you would inform them that there is a wizard *after* the interaction, but we recognize that can be hard.)
 
+https://youtu.be/YbOrXV_8CM8
+
 Answer the following:
 
 ### What worked well about the system and what didn't?
-\*\**your answer here*\*\*
+
+Recognition: base.en transcribed multi-word turns accurately, for example "banana, laptop, dragon, paper".
+Intuitive feel: Team 2 said it felt intuitive, "like there is a language model running behind it". There is none. It's only speech-to-text and plain string matching, so well-chosen wording and fast feedback can feel smarter than the logic is.
+The concept: Team 1 found it interesting that it tests verbal memory, and thought it would suit road trips.
+Recovering from errors: The call-out lets the player correct a recognition mistake instead of losing the game.
 
 ### What worked well about the controller and what didn't?
-\*\**your answer here*\*\*
+
+Team 2 said the pauses are too long. Each turn has about 1.5 to 1.8 s of silent processing plus the call-out windows. This is also what I saw when acting out the dialogue, where my subject got confused during the lag and felt like they'd done something wrong.
+Team 2 also found it easy to mislead by saying "wrong" even when the Pi was right. If the player calls out their own new word, the Pi has to trust them.
+Team 3 worried their first words might be cut off.
 
 ### What lessons can you take away from the WoZ interactions for designing a more autonomous version of the system?
-\*\**your answer here*\*\*
+Show the thinking time. When I simulated lag, my subject felt they had done something wrong. A real device has real delay, so it needs to show clearly that it's working. Our LED is off while thinking, which can look like the device died. A slow pulse would be better.
+we could also explain unusual rules up front. My subject was unsure about the device repeating the whole sequence, since that isn't standard in this game. The intro should state the rules.
+Tune the timing to the game. The right silence threshold depends on where players pause (before their new word), not on a default value.
 
 ### How could you use your system to create a dataset of interaction? What other sensing modalities would make sense to capture?
-\*\**your answer here*\*\*
+If the script logged each turn, we could also save the audio with its transcript, the pause lengths, and when people call out (a real machine error, a false alarm, or an attempt to mislead it, which Team 2 found). Right now the script only prints to the terminal, so logging to a file would be a small addition.
+
+we could also use webcam for gaze and head movement, to show when the player is thinking.
+better mechanism to handle noise level and mic distance: both affect recognition accuracy.
+multiple microphones, to tell players apart in a multiplayer mode, as Team 1 suggested.
 
 <details>
   <summary><strong>Submission Cleanup Reminder (Click to Expand)</strong></summary>
