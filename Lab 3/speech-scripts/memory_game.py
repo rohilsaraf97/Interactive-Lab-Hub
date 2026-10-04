@@ -479,7 +479,13 @@ def main():
 
 
 if __name__ == "__main__":
+    signal.signal(signal.SIGTERM, lambda *_: sys.exit(0))   # `kill` / systemd stop
     try:
         main()
     except KeyboardInterrupt:
         print("\nStopped.")
+    finally:                  # runs on Ctrl-C, kill, a crash, or a normal exit
+        led("off")
+        sd.stop()
+        if mic:
+            mic.close()
