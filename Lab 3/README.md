@@ -244,6 +244,8 @@ LED off: it's thinking.
 
 3. Make a new storyboard, diagram and/or script based on these reflections.
 
+<img width="5712" height="4284" alt="IMG_8624" src="https://github.com/user-attachments/assets/b3b289e6-1399-4473-806c-382d524b6405" />
+
 Device: "Memory game! ... Press the button to start."
 Me: (presses the button)
 Device: "I'll start. Banana." (beep, LED solid)
