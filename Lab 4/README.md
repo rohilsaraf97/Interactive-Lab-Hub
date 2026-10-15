@@ -17,10 +17,7 @@
 ---
 
 ## Lab Overview
-Team: <canvas group name>  
-Members: Full Name (netid, github-handle), ...  
-Clock name: <name>
-
+Members: Rohil Saraf, Andreas Kilbinger
 
 For lab this week, we focus on both sensing and actuation, bringing new modes of input and output into your devices, while also prototyping the physical structure and overall look of the device. You will consider how the physical form supports sensing and actuation, and how these elements come together to shape the interaction and aesthetics of the device.
 
@@ -123,105 +120,45 @@ Option 3: (preferred) use the Github.com interface to update the changes.
 
 ---
 
-### Part A
-### Capacitive Sensing, a.k.a. Human-Twizzler Interaction 
+## Part A. Capacitive Sensing
 
-We want to introduce you to the [capacitive sensor](https://learn.adafruit.com/adafruit-mpr121-gator) in your kit. It's one of the most flexible input devices we are able to provide. At boot, it measures the capacitance on each of the 12 contacts. Whenever that capacitance changes, it considers it a user touch. You can attach any conductive material. In your kit, you have copper tape that will work well, but don't limit yourself! In the example below, we use Twizzlers--you should pick your own objects.
+I connected the MPR121 capacitive sensor to the Pi with a Qwiic cable. Running `i2cdetect -y 1` showed it at address `0x5a`. I clipped ___ (objects) to pads ___ with alligator clips and ran `cap_test.py`. Touching each object printed the matching pad number, so the sensor works.
 
-
-<p float="left">
-<img src="https://cdn-learn.adafruit.com/guides/cropped_images/000/003/226/medium640/MPR121_top_angle.jpg?1609282424" height="150" />
- 
-</p>
-
-Plug in the capacitive sensor board with the QWIIC connector. Connect your Twizzlers with either the copper tape or the alligator clips (the clips work better). Install the latest requirements from your working virtual environment:
-
-These Twizzlers are connected to pads 6 and 10. When you run the code and touch a Twizzler, the terminal will print out the following
-
-```
-(circuitpython) pi@ixe00:~/Interactive-Lab-Hub/Lab 4 $ python cap_test.py 
-Twizzler 10 touched!
-Twizzler 6 touched!
-```
+<img src="media/touch.jpeg" width="400"> <img src="media/touch_output.jpeg" width="400">
 
 ---
 
-### Part B
-### More sensors
+## Part B. More Sensors
 
-#### Light/Proximity/Gesture sensor (APDS-9960)
+I tested each sensor one at a time. I shut the Pi down before plugging in each new board, then checked its address with `i2cdetect -y 1`.
 
-We here want you to get to know this awesome sensor [Adafruit APDS-9960](https://www.adafruit.com/product/3595). It is capable of sensing proximity, light (also RGB), and gesture! 
- 
-<img src="https://cdn-shop.adafruit.com/970x728/3595-06.jpg" width=200>
- 
+### Light / proximity / gesture sensor (APDS-9960, `0x39`)
 
-Connect it to your pi with Qwiic connector and try running the three example scripts individually to see what the sensor is capable of doing!
+<img src="media/color_gesture_proximity.jpeg" width="400">
 
-```
-(circuitpython) pi@ixe00:~/Interactive-Lab-Hub/Lab 4 $ python proximity_test.py
-...
-(circuitpython) pi@ixe00:~/Interactive-Lab-Hub/Lab 4 $ python gesture_test.py
-...
-(circuitpython) pi@ixe00:~/Interactive-Lab-Hub/Lab 4 $ python color_test.py
-...
-```
+- **Proximity:** about ___ with nothing near it, up to about ___ when my hand was right above it. It only reacts within a few cm.
+- **Gesture:** ___ (which directions worked, how close you had to be)
+- **Color/light:** about ___ lux in the room, about ___ when I covered it.
 
-You can go the the [Adafruit GitHub Page](https://github.com/adafruit/Adafruit_CircuitPython_APDS9960) to see more examples for this sensor!
+<img src="media/proximity_output.jpeg" width="260"> <img src="media/gesture_output.jpeg" width="260"> <img src="media/color_output.jpeg" width="260">
 
-#### Rotary Encoder 
+### Rotary encoder (`0x36`)
 
-A rotary encoder is an electro-mechanical device that converts the angular position to analog or digital output signals. The [Adafruit rotary encoder](https://www.adafruit.com/product/4991#technical-details) we ordered for you came with separate breakout board and encoder itself, that is, they will need to be soldered if you have not yet done so! We will be bringing the soldering station to the lab class for you to use, also, you can go to the MakerLAB to do the soldering off-class. Here is some [guidance on soldering](https://learn.adafruit.com/adafruit-guide-excellent-soldering/preparation) from Adafruit. When you first solder, get someone who has done it before (ideally in the MakerLAB environment). It is a good idea to review this material beforehand so you know what to look at.
+The position went up and down as I turned the knob each way, and pressing it printed the button press.
 
-<p float="left">
+<img src="media/rotary.jpeg" width="400"> <img src="media/rotary_output.jpeg" width="400">
 
-   
-<img src="https://cdn-shop.adafruit.com/970x728/377-02.jpg" height="200" />
-<img src="https://cdn-shop.adafruit.com/970x728/4991-09.jpg" height="200">
-</p>
+### Joystick (`0x20`)
 
-Connect it to your pi with Qwiic connector and try running the example script, it comes with an additional button which might be useful for your design!
+X and Y went from ___ to ___ and sat at about ___ in the middle. The button read ___ when pressed.
 
-```
-(circuitpython) pi@ixe00:~/Interactive-Lab-Hub/Lab 4 $ python encoder_test.py
-```
+<img src="media/joystick.jpeg" width="400"> <img src="media/joystick_output.jpeg" width="400">
 
-You can go to the [Adafruit Learn Page](https://learn.adafruit.com/adafruit-i2c-qt-rotary-encoder/python-circuitpython) to learn more about the sensor! The sensor actually comes with an LED (neo pixel): Can you try lighting it up? 
+### Distance sensor (VCNL4040, `0x60`)
 
-#### Joystick 
+___ with nothing in front, about ___ with my hand at ~5 cm, ___ right up against it. It was most reliable between ___ and ___ cm.
 
-
-A [joystick](https://www.sparkfun.com/products/15168) can be used to sense and report the input of the stick for it pivoting angle or direction. It also comes with a button input!
-
-<p float="left">
-<img src="https://cdn.sparkfun.com//assets/parts/1/3/5/5/8/15168-SparkFun_Qwiic_Joystick-01.jpg" height="200" />
-</p>
-
-Connect it to your pi with Qwiic connector and try running the example script to see what it can do!
-
-```
-(circuitpython) pi@ixe00:~/Interactive-Lab-Hub/Lab 4 $ python joystick_test.py
-```
-
-You can go to the [SparkFun GitHub Page](https://github.com/sparkfun/Qwiic_Joystick_Py) to learn more about the sensor!
-
-#### Distance Sensor
-
-
-Earlier we have asked you to play with the proximity sensor, which is able to sense objects within a short distance. Here, we offer [Sparkfun Proximity Sensor Breakout](https://www.sparkfun.com/products/15177), With the ability to detect objects up to 20cm away.
-
-<p float="left">
-<img src="https://cdn.sparkfun.com//assets/parts/1/3/5/9/2/15177-SparkFun_Proximity_Sensor_Breakout_-_20cm__VCNL4040__Qwiic_-01.jpg" height="200" />
-
-</p>
-
-Connect it to your pi with Qwiic connector and try running the example script to see how it works!
-
-```
-(circuitpython) pi@ixe00:~/Interactive-Lab-Hub/Lab 4 $ python qwiic_distance.py
-```
-
-You can go to the [SparkFun GitHub Page](https://github.com/sparkfun/Qwiic_Proximity_Py) to learn more about the sensor and see other examples
+<img src="media/distance.jpeg" width="400"> <img src="media/distance_output.jpeg" width="400">
 
 ---
 
