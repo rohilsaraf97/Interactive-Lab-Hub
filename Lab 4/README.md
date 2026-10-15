@@ -162,10 +162,13 @@ ___ with nothing in front, about ___ with my hand at ~5 cm, ___ right up against
 
 ---
 
-### Part C
-### Servo Actuation
+## Part C. Servo Actuation
 
-Now that you have explored several forms of sensing, add physical output by learning to control a servo motor. Complete the Servo pHAT setup and basic servo test before beginning your interaction design.
+I stacked the SparkFun Servo pHAT on top of the Mini PiTFT and plugged the servo into channel 0 (brown wire to GND). The Pi is powered by its own USB-C, and the pHAT has a second USB-C cable to power the servo. `i2cdetect -y 1` showed the pHAT at `0x40`. Running `pi_servo_hat_test.py` made the servo sweep back and forth.
+
+<img src="media/servo.jpeg" width="400">
+
+[Video of the servo sweeping](media/servo.mp4)
 
 ### Servo Control with SparkFun Servo pHAT
 For this lab, you will use the **SparkFun Servo pHAT** to control a micro servo (such as the Miuzei MS18 or similar 9g servo). The Servo pHAT stacks directly on top of the Adafruit Mini PiTFT (135×240) display without pin conflicts:
