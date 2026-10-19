@@ -199,27 +199,22 @@ A servo motor is a rotary actuator that allows for precise control of angular po
 
 ## Part D. Physical Interaction Design: Feast Automata
 
-### My idea: Tea Bag Dunker
+### Our idea: Tea Bag Dunker
 
-If you forget the tea bag in the cup, the tea gets way too strong. So I want to build a little machine that dunks the tea bag for you and takes it out when it's done.
+If you forget the tea bag in the cup, the tea gets way too strong. So we built a little machine that dunks the tea bag for you and takes it out when it's done.
 
 How it works:
 
-1. You put your mug on the marked spot. A distance sensor under the base notices the mug, and the light on the knob turns on.
+1. You put your mug on the marked spot. A distance sensor under the base notices the mug, and the light on the knob flashes.
 2. You turn the rotary encoder to pick how strong you want the tea. The light shows the strength (light yellow = weak, dark brown = strong).
 3. You press the knob to start. The servo lowers the tea bag into the mug.
 4. While it steeps, the servo dunks the bag up and down every few seconds. The light slowly goes from green to orange to brown so you can see how much time is left.
 5. When time is up, the arm lifts the bag out and holds it over the mug so it can drip. The light blinks.
 6. If you pick up the mug in the middle, the sensor notices and the arm lifts the bag right away.
 
-Extra ideas if I have time:
-
-- Weak tea gets slow, calm dunks and strong tea gets fast, wild dunks.
-- A copper tape pad on the base you can touch to stop early (capacitive sensor).
-
 ### 5 sketches
 
-I drew 5 different ways to arrange the sensor, servo and electronics.
+We drew 5 different ways to arrange the sensor, servo and electronics.
 
 **Sketch 1: Crane.** A post next to the mug with the servo on top. A long arm reaches over the mug and the bag hangs from the end. The distance sensor sits in the base under the mug.
 
@@ -245,258 +240,146 @@ I drew 5 different ways to arrange the sensor, servo and electronics.
 
 - Can a small servo lift a wet tea bag, and does the arm swing far enough to pull it fully out of the tea?
 - Where does the distance sensor need to sit to reliably tell when a mug is there? Does it work through cardboard, or does it need a hole?
-- How do I keep the Pi and the boards away from the hot water and steam?
+- How do we keep the Pi and the boards away from the hot water and steam?
 - Will the cardboard stay stiff, or bend when the arm moves or gets wet?
 - Will it tip over? This is a big question for the mug clip, where everything sits on the rim.
 - Can someone tell how strong the tea will be just from the color of the light?
 
-### What do I need to prototype to answer them?
+### What do we need to prototype to answer them?
 
 - Build the post and arm, hang a real wet tea bag from it, and move it by hand to see how high it needs to go.
-- Try the distance sensor under a mug, with and without a hole in the base, and compare the readings.
-- Pour hot water and check how much steam reaches the back of the post.
+- Try the distance sensor under a mug and see whether it can reliably detect it.
+- Check how much steam reaches the back of the post.
 - Push and shake the frame to see if it bends or tips.
-- Let a friend try it without explaining the light colors.
+- Let someone try it without explaining the light colors.
 
-### Which design I picked and why
+### Which design we picked and why
 
-I picked **Sketch 1, the crane**.
+We picked **Sketch 1, the crane**.
 
 - It's the simplest to build. The servo swings the arm directly, with no strings, spools or pivots.
 - The distance sensor fits naturally in the base under the mug, and the knob goes on the front where people reach first.
 - The Pi sits behind the post, away from the steam.
 - The base is big and flat, so it won't tip over like the mug clip might.
 
-The butler (sketch 5) is the same mechanism in a costume, so if the crane works I can turn it into the butler later.
-
 ### Rough prototype
 
-<!-- photos/video go here after building -->
+The rough prototype is a cardboard base (about 20 × 30 cm) with a folded triangle-tube post. The servo sits in a slot near the top of the post, and a double-layer cardboard arm is glued to the servo horn. A notch at the end of the arm holds the tea bag string. The distance sensor is taped under a hole in the base where the mug goes, the knob pokes up through the front of the base, and the Pi sits behind the post.
 
-What I learned from building it:
+<img src="media/part_d_1.jpeg" width="400"> <img src="media/part_d_2.jpeg" width="400">
 
-- ***
-- ***
-- ***
+[▶ Video: rough prototype, dunking by hand](https://youtube.com/shorts/EggXWdScXNs?feature=share)
+
+What we learned from building it:
+
+- **Arm length:** We first cut the arm at 18 cm, but the post is only about 12 cm from the center of the mug, so we trimmed it until the notch sat right above the middle of the mug.
+- **Stiffness:** We glued two layers of cardboard together for the arm and folded the post into a triangle tube so neither bends when the arm swings with a wet tea bag.
+- **Sensor placement:** The distance sensor needs a hole in the base right under the mug. Through the hole it clearly sees the mug (see readings in Part E).
+- **Cables:** The standard Qwiic cables were too short to reach from the Pi behind the post to the knob and the sensor at the front. We used a breadboard under the base as a hub where all the Qwiic cables meet
+- **Drips:** When the mug is lifted away, the wet bag can drip onto the sensor hole. So the arm holds the bag over the mug to drip before you take it. Also cover the platform with plastic.
 
 ---
 
-## Part 2
+# Part 2
 
-Following exploration and reflection from Part 1, complete the "looks like," "works like" and "acts like" prototypes for your design, reiterated below.
+## Part E. Build & Integrate: Sensing + Actuation
 
----
+### What we built
 
-### Part E
+The Tea Bag Dunker uses **two inputs** and **two outputs**:
 
-#### Build & Integrate: Sensing + Actuation
+| | Part | What it does |
+|---|---|---|
+| Input | Distance sensor (VCNL4040) under the base | Detects when a mug is placed or lifted |
+| Input | Rotary encoder on the front of the base | Turn to pick tea strength, press to start |
+| Output | Servo on top of the post | Lowers, dunks and lifts the tea bag |
+| Output | NeoPixel on the encoder | Shows strength, steeping progress, and when tea is ready |
 
-For Part 2, build the Feast Automata interaction you developed in Part D by connecting sensing/input to physical actuation.
+**Code:** [`tea_dunker.py`](tea_dunker.py)
 
-**Your prototype should:**
-
-- Use at least one sensing or input device.
-- Use servo-based physical actuation.
-- Connect sensing and actuation into a meaningful interaction around eating, drinking, cooking, serving, or sharing food.
-- Additional inputs, displays, LEDs, buttons, or other outputs are optional extensions.
-
-**Document your system with:**
-
-- Code for your sensing + actuation prototype
-- Photos and/or video of the working prototype in action
-- A simple interaction diagram or sketch showing how sensing and actuation are connected
-- Written reflection: What did you learn about connecting sensing, movement, and physical form? What was fun, surprising, or challenging?
-
-**Questions to consider:**
-
-- How does your chosen sensor or input shape the physical response?
-- How does the physical arrangement of the sensor and actuator change the interaction?
-- What thresholds, timing, or movement patterns make the interaction feel clear or playful?
-- What changes when you adjust the sensor placement or servo motion?
-
-Iterate on the sensing, movement, and physical form, and document what you discover.
-
-See encoder_accel_servo_dashboard.py in the Lab 4 folder for an optional example of chaining together three devices.
-
-**`Lab 4/encoder_accel_servo_dashboard.py`**
-
-#### Example Application: Windmill Coaster
-
-Now that you have explored both sensing and actuation, here is a simple example that combines the two.
-
-The **Windmill Coaster** uses a Qwiic distance/proximity sensor to detect when a cup is placed on a coaster. When the cup is detected, a servo motor animates a small windmill by sweeping it back and forth, turning an ordinary action during drinking into a playful physical interaction.
-
-<p align="center">
-    <img src="windmill_coaster11.gif" alt="Windmill Coaster Demo" width="400"/>
-</p>
-
-This example demonstrates a simple interaction pipeline:
-
-**cup placed → distance sensor detects cup → servo actuates windmill**
-
-Connect the Qwiic distance sensor to the Pi and connect the servo to Channel 0 of the Servo pHAT. Make sure the Servo pHAT is powered through its USB-C connection.
-
-Run the example script:
-
-```bash
-python windmill_coaster.py
+```
+python tea_dunker.py         
 ```
 
-The script continuously reads the proximity value from the distance sensor. When the value passes a threshold, the servo begins animating the windmill. When the cup is removed, the servo stops and returns to its resting position.
+| Strength | Steep time | Dunk every | Light color |
+|---|---|---|---|
+| Very weak | 2 min | 8 s | Light yellow |
+| Weak | 3 min | 6 s | Yellow |
+| Medium | 4 min | 4 s | Orange |
+| Strong | 5 min | 2.5 s | Brown |
+| Very strong | 6 min | 1.5 s | Dark brown |
 
-You may need to adjust `CUP_THRESHOLD` in [`windmill_coaster.py`](windmill_coaster.py) depending on the size of your cup and the physical placement of the sensor. You can run `qwiic_distance.py` first to compare readings with and without a cup.
+Stronger tea also gets faster servo movement, so a strong cup looks noticeably more energetic than a weak one. The servo always moves in small 2-degree steps instead of jumping straight to an angle, so the wet bag doesn't get flung around.
 
-Use this example as a starting point. Change the sensor, movement, physical form, or dining interaction to create your own Feast Automata variation.
+### Interaction diagram
 
-#### Optional Extensions
-
-The following examples are optional resources if you want to add more inputs or outputs to your prototype.
-
-##### Using Multiple Qwiic Buttons: Changing I2C Address (Physically & Digitally)
-
-If you want to use more than one Qwiic Button in your project, you must give each button a unique I2C address. There are two ways to do this:
-
-##### 1. Physically: Soldering Address Jumpers
-
-On the back of the Qwiic Button, you'll find four solder jumpers labeled A0, A1, A2, and A3. By bridging these with solder, you change the I2C address. Only one button on the chain can use the default address (0x6F).
-
-**Address Table:**
-
-| A3  | A2  | A1  | A0  | Address (hex) |
-| --- | --- | --- | --- | ------------- |
-| 0   | 0   | 0   | 0   | 0x6F          |
-| 0   | 0   | 0   | 1   | 0x6E          |
-| 0   | 0   | 1   | 0   | 0x6D          |
-| 0   | 0   | 1   | 1   | 0x6C          |
-| 0   | 1   | 0   | 0   | 0x6B          |
-| 0   | 1   | 0   | 1   | 0x6A          |
-| 0   | 1   | 1   | 0   | 0x69          |
-| 0   | 1   | 1   | 1   | 0x68          |
-| 1   | 0   | 0   | 0   | 0x67          |
-| ... | ... | ... | ... | ...           |
-
-For example, if you solder A0 closed (leave A1, A2, A3 open), the address becomes 0x6E.
-
-**Soldering Tips:**
-
-- Use a small amount of solder to bridge the pads for the jumper you want to close.
-- Only one jumper needs to be closed for each address change (see table above).
-- Power cycle the button after changing the jumper.
-
-##### 2. Digitally: Using Software to Change Address
-
-You can also change the address in software (temporarily or permanently) using the example script `qwiic_button_ex6_changeI2CAddress.py` in the Lab 4 folder. This is useful if you want to reassign addresses without soldering.
-
-Run the script and follow the prompts:
-
-```bash
-python qwiic_button_ex6_changeI2CAddress.py
+```mermaid
+flowchart TD
+    A[Mug placed on base] -->|distance sensor reading > 1000| B[Light flashes white]
+    B --> C[Turn knob: pick strength<br/>light shows yellow to dark brown]
+    C -->|press knob| D[Servo lowers bag into mug]
+    D --> E[Dunk every few seconds<br/>light fades green to orange to brown]
+    E -->|timer ends| F[Servo lifts bag out<br/>light blinks brown]
+    E -->|mug lifted or knob pressed| G[Stop early: servo lifts bag]
+    F -->|mug lifted| A
+    G --> A
 ```
 
-Enter the new address (e.g., 5B for 0x5B) when prompted. Power cycle the button after changing the address.
+### Wiring
 
-**Note:** The software method is less foolproof and you need to make sure to keep track of which button has which address!
+- The Servo pHAT sits on top of the Mini PiTFT on the Pi. The servo plugs into channel 0.
+- A breadboard under the base acts as a Qwiic extender: the Pi, and the distance sensor each connect to it with a Qwiic-to-pin cable, and then the encoder connects to the distance sensor via Qwiic cable chaining.
 
-##### Using Multiple Buttons in Code
+### Working prototype
 
-After setting unique addresses, you can use multiple buttons in your script. See these example scripts in the Lab 4 folder:
+[▶ Video: full tea cycle](https://youtube.com/shorts/SZrzjsSaJDw?feature=share)
 
-- **`qwiic_1_button.py`**: Basic example for reading a single Qwiic Button (default address 0x6F). Run with:
+<img src="media/final_1.jpeg" width="400"> <img src="media/final_2.jpeg" width="400">
 
-  ```bash
-  python qwiic_1_button.py
-  ```
+### Iterations
 
-- **`qwiic_button_led_demo.py`**: Demonstrates using two Qwiic Buttons at different addresses (e.g., 0x6F and 0x6E) and controlling their LEDs. Button 1 toggles its own LED; Button 2 toggles both LEDs. Run with:
-  ```bash
-  python qwiic_button_led_demo.py
-  ```
+1. **Mug threshold.** With the sensor first taped loosely under the hole, the "no mug" reading drifted from about 860 to about 760, while a mug read about 1460. We taped the sensor down more firmly, and after that the empty reading stayed steady at about 480 to 500 while a mug read about 1400 to 1500. We set `MUG_THRESHOLD = 1000`, halfway between, so small wiggles don't trigger it.
+2. **Servo angles.** We tuned the angles on the real build: `UP_ANGLE = 0` lifts the bag clear of the rim, `DOWN_ANGLE = 60` puts it in the tea. We increased each dunk (`DIP`) from 20 to 30 degrees so the bag moves enough in the water to be clearly visible.
+3. **Knob direction.** At first, turning the knob right made the tea *weaker*, which felt backwards. We flipped the encoder direction so right = stronger, like turning up a volume knob.
+4. **Labels.** It wasn't obvious where to put the mug or what the light colors meant, so we added printed labels: a "place mug here" circle (with a window cut out for the sensor), a weak-to-strong dial around the knob, a how-to card on the post, and a legend for the light colors.
 
-Here is a minimal code example for two buttons:
+### Reflection
 
-```python
-import qwiic_button
+**How does the sensor shape the physical response?** The distance sensor makes the mug itself the on/off switch. Because the machine only works when a mug is there, it can't dunk a bag into nothing, and lifting the mug is a natural, instant way to stop it. The knob adds a deliberate choice (how strong) on top of that automatic detection.
 
-# Default button (0x6F)
-button1 = qwiic_button.QwiicButton()
-# Button with A0 soldered (0x6E)
-button2 = qwiic_button.QwiicButton(0x6E)
+**How does the physical arrangement change the interaction?** Putting the sensor right under the mug spot made detection very reliable, since there's a big jump in readings. But it also meant the sensor sits right where the tea bag drips. Putting the knob at the front makes it the first thing you touch, and keeping the Pi behind the post keeps it away from steam.
 
-button1.begin()
-button2.begin()
+**What thresholds, timing or movement make it feel clear or playful?** The threshold had to sit well between the empty and mug readings, or it would flicker on and off. Slow, gentle dunks for weak tea and fast, jerky dunks for strong tea make the strength feel physical, not just a number. The white "hello" flash when the mug is placed tells you it noticed you.
 
-while True:
-		if button1.is_button_pressed():
-				print("Button 1 pressed!")
-		if button2.is_button_pressed():
-				print("Button 2 pressed!")
-```
+**What changes when you adjust sensor placement or servo motion?** A loosely taped sensor drifted by about 100, which was enough to make the threshold unreliable. Taping it firmly fixed it. Small changes to the servo angles made the difference between the bag clearing the rim or dragging over it.
 
-For more details, see the [Qwiic Button Hookup Guide](https://learn.sparkfun.com/tutorials/qwiic-button-hookup-guide/all#i2c-address).
+**What was fun, surprising or challenging?** Surprising: the sensor reads about 500 even with no mug, because it sees the cardboard around the hole. Challenging: cable length. The Qwiic cables didn't reach across the base, so we had to use a breadboard as a hub. Fun: watching the light slowly fade toward brown while the bag dunks makes waiting for tea feel like something is happening.
 
 ---
 
-##### PCF8574 GPIO Expander: Add More Pins Over I²C
+## Part F. Final Documentation
 
-Sometimes your Pi’s header GPIO pins are already full (e.g., with a display or HAT). That’s where an I²C GPIO expander comes in handy.
+### Looks like
 
-We use the Adafruit PCF8574 I²C GPIO Expander, which gives you 8 extra digital pins over I²C. It’s a great way to prototype with LEDs, buttons, or other components on the breadboard without worrying about pin conflicts—similar to how Arduino users often expand their pinouts when prototyping physical interactions.
+<img src="media/final.jpeg" width="400"> <img src="media/final_3.jpeg" width="400">
 
-**Why is this useful?**
+The Tea Bag Dunker is a small cardboard crane that sits on a kitchen counter or desk next to your mug. The base is about 20 × 30 cm and the post is about 20 cm tall, roughly the size of a desk lamp. It's made of cardboard, tape and hot glue, so it's light, but the wide base keeps it from tipping when the arm moves. The mug spot is marked with a printed circle, the knob has a weak-to-strong dial around it, and a how-to card on the post explains the steps. The electronics are hidden under the base and behind the post, away from the hot water.
 
-- You only need two wires (I²C: SDA + SCL) to unlock 8 extra GPIOs.
-- It integrates smoothly with CircuitPython and Blinka.
-- It allows a clean prototyping workflow when the Pi’s 40-pin header is already occupied by displays, HATs, or sensors.
-- Makes breadboard setups feel more like an Arduino-style prototyping environment where it’s easy to wire up interaction elements.
+### Works like
 
-**Demo Script:** `Lab 4/gpio_expander.py`
+[▶ Video: full tea cycle](https://youtube.com/shorts/SZrzjsSaJDw?feature=share)
 
-<p align="center">
-    <img src="gpio_leds.gif" alt="GPIO Expander LED Demo" width="400"/>
-</p>
+<img src="media/final_4.jpeg" width="400">
 
-We connected 8 LEDs (through 220 Ω resistors) to the expander and ran a little light show. The script cycles through three patterns:
+The distance sensor under the base detects the mug (reading above 1000). The rotary encoder picks one of 5 strengths (2 to 6 minutes). The Raspberry Pi runs [`tea_dunker.py`](tea_dunker.py), which tells the Servo pHAT to lower the bag, dunk it every few seconds, and lift it out when the timer ends. The NeoPixel on the encoder shows each stage: white flash = mug found, yellow to brown = strength, green to orange to brown = time left, blinking = done. Lifting the mug at any time stops it and lifts the bag.
 
-- Chase (one LED at a time, left to right)
-- Knight Rider (back-and-forth sweep)
-- Disco (random blink chaos)
+### Acts like
 
-Every few runs, the script swaps to the next pattern automatically:
+[▶ Video: a participant using it](https://youtube.com/shorts/KtWW4rYMzgM?feature=share)
 
-```bash
-python gpio_expander.py
-```
+We gave a participant a mug and a tea bag and only said "make some tea," without explaining how it works.
 
-This is a playful way to visualize how the expander works, but the same technique applies if you wanted to prototype buttons, switches, or other interaction elements. It’s a lightweight, flexible addition to your prototyping toolkit.
-
----
-
----
-
----
-
-### Part F
-
-### Final Documentation
-
-Document all the prototypes and iterations you have designed and worked on! Again, deliverables for this lab are writings, sketches, photos, and videos that show what your prototype:
-
-- "Looks like": shows how the device should look, feel, sit, weigh, etc.
-- "Works like": shows what the device can do
-- "Acts like": shows how a person would interact with the device
-
----
-
-## Deliverables \& Submission for Lab 4
-
-The deliverables for this lab are, writings, sketches, photos, and videos that show what your prototype:
-
-- "Looks like": shows how the device should look, feel, sit, weigh, etc.
-- "Works like": shows what the device can do.
-- "Acts like": shows how a person would interact with the device.
-
-For submission, the readme.md page for this lab should be edited to include the work you have done:
-
-- Upload any materials that explain what you did, into your lab 4 repository, and link them in your lab 4 readme.md.
-- Link your Lab 4 readme.md in your main Interactive-Lab-Hub readme.md.
-- Labs are due on Mondays, make sure to submit your Lab 4 readme.md to Canvas.
+- **What they understood right away:** That they had to place the cup of hotwater under the crane
+- **What confused them:** how to start the brewing process, not immediately obvious that you can press the encoder button, also strength selection, even with instructions was difficuly to understand
+- **What they thought the light colors meant:** Strength was perceived correctly, however, the wait time and the finish signals were confusing.
+- **What we would change based on this:** Clearer instrcuctions for using the encoder, maybe a screen to help the user with every step or a speaker. Also a color sensor for automatic strength detection. Also a mechanism for adding/removing the tea bag or a signal for that
