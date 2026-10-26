@@ -288,26 +288,26 @@ What we learned from building it:
 
 The Tea Bag Dunker uses **two inputs** and **two outputs**:
 
-| | Part | What it does |
-|---|---|---|
-| Input | Distance sensor (VCNL4040) under the base | Detects when a mug is placed or lifted |
-| Input | Rotary encoder on the front of the base | Turn to pick tea strength, press to start |
-| Output | Servo on top of the post | Lowers, dunks and lifts the tea bag |
-| Output | NeoPixel on the encoder | Shows strength, steeping progress, and when tea is ready |
+|        | Part                                      | What it does                                             |
+| ------ | ----------------------------------------- | -------------------------------------------------------- |
+| Input  | Distance sensor (VCNL4040) under the base | Detects when a mug is placed or lifted                   |
+| Input  | Rotary encoder on the front of the base   | Turn to pick tea strength, press to start                |
+| Output | Servo on top of the post                  | Lowers, dunks and lifts the tea bag                      |
+| Output | NeoPixel on the encoder                   | Shows strength, steeping progress, and when tea is ready |
 
 **Code:** [`tea_dunker.py`](tea_dunker.py)
 
 ```
-python tea_dunker.py         
+python tea_dunker.py
 ```
 
-| Strength | Steep time | Dunk every | Light color |
-|---|---|---|---|
-| Very weak | 2 min | 8 s | Light yellow |
-| Weak | 3 min | 6 s | Yellow |
-| Medium | 4 min | 4 s | Orange |
-| Strong | 5 min | 2.5 s | Brown |
-| Very strong | 6 min | 1.5 s | Dark brown |
+| Strength    | Steep time | Dunk every | Light color  |
+| ----------- | ---------- | ---------- | ------------ |
+| Very weak   | 2 min      | 8 s        | Light yellow |
+| Weak        | 3 min      | 6 s        | Yellow       |
+| Medium      | 4 min      | 4 s        | Orange       |
+| Strong      | 5 min      | 2.5 s      | Brown        |
+| Very strong | 6 min      | 1.5 s      | Dark brown   |
 
 Stronger tea also gets faster servo movement, so a strong cup looks noticeably more energetic than a weak one. The servo always moves in small 2-degree steps instead of jumping straight to an angle, so the wet bag doesn't get flung around.
 
@@ -340,7 +340,7 @@ flowchart TD
 
 1. **Mug threshold.** With the sensor first taped loosely under the hole, the "no mug" reading drifted from about 860 to about 760, while a mug read about 1460. We taped the sensor down more firmly, and after that the empty reading stayed steady at about 480 to 500 while a mug read about 1400 to 1500. We set `MUG_THRESHOLD = 1000`, halfway between, so small wiggles don't trigger it.
 2. **Servo angles.** We tuned the angles on the real build: `UP_ANGLE = 0` lifts the bag clear of the rim, `DOWN_ANGLE = 60` puts it in the tea. We increased each dunk (`DIP`) from 20 to 30 degrees so the bag moves enough in the water to be clearly visible.
-3. **Knob direction.** At first, turning the knob right made the tea *weaker*, which felt backwards. We flipped the encoder direction so right = stronger, like turning up a volume knob.
+3. **Knob direction.** At first, turning the knob right made the tea _weaker_, which felt backwards. We flipped the encoder direction so right = stronger, like turning up a volume knob.
 4. **Labels.** It wasn't obvious where to put the mug or what the light colors meant, so we added printed labels: a "place mug here" circle (with a window cut out for the sensor), a weak-to-strong dial around the knob, a how-to card on the post, and a legend for the light colors.
 
 ### Reflection
