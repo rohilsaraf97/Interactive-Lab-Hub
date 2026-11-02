@@ -1,0 +1,6 @@
+adafruit-blinka
+adafruit-circuitpython-rgb-display
+sparkfun-qwiic-button
+sparkfun-pi-servo-hat
+piper-tts
+pillow

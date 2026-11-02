@@ -1,0 +1,17 @@
+# Starts Dish Shame when the Pi boots. It waits on the screen for a button press.
+# Installed by install_service.sh. Logs: journalctl -u dish-shame -f
+[Unit]
+Description=Dish Shame (Lab 5): watches the kitchen counter overnight
+After=network.target ollama.service
+Wants=ollama.service
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/Interactive-Lab-Hub/Lab 5
+Environment=LANG=C.UTF-8 LC_ALL=C.UTF-8 PYTHONIOENCODING=utf-8 YOLO_OFFLINE=1
+ExecStart="/home/pi/Interactive-Lab-Hub/Lab 5/.venv/bin/python" -u dish_shame.py
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
