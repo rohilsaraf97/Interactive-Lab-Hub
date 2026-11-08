@@ -27,7 +27,7 @@ The message showed up in the subscriber terminal right away and in the web debug
 2. **"At my desk" presence light.** Each roommate's Pi publishes whether someone is sitting nearby, and everyone sees who's home on a shared display.
 3. **Plant check-in.** A moisture or light sensor next to a plant publishes readings, and a friend's Pi shows a sad face when the plant needs attention.
 4. **Long-distance high five.** Waving at your Pi (gesture sensor) lights up a friend's Pi somewhere else, and they wave back.
-5. **Group vote.** Everyone swipes up or down on their own Pi, and one screen shows the live tally.
+5. **Co-op cooking game (Order Up!).** Three Pis each do one job (joystick, knife, pan) and send events to a shared screen, so the team has to talk to finish orders. This is the idea we built for Part C.
 
 **On topic design:** MQTT doesn't fix any vocabulary in advance. We had to invent our own topic names and message formats, while a standard like Matter defines what a "light" or "sensor" means for you. That made our system easy to start but meant we had to agree on topics as a team (see Part C).
 
