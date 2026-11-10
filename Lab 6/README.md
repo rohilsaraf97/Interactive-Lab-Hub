@@ -1,6 +1,6 @@
 # Distributed Interaction
  
-**Team:** Rohil Saraf, Yuxuan Wang (yw2946), Max Corkran (mc3223)
+**Team:** Rohil Saraf, Yuxuan Wang (yw2946), Max Corkran (mc3223), Xie Li (xl2323)
  
 Our project is **Order Up!**, a co-op cooking game for three players on three Raspberry Pis.
  
